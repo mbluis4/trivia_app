@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./index.css";
+import Start from "./components/Start";
+import Page1 from "./components/Page1";
 
 function App() {
+  const [page1, setPage1] = useState(false);
+
+  const startQuiz = () => {
+    setPage1((prev) => !prev);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!page1 && <Start startQuiz={startQuiz} />}
+      {page1 && <Page1 />}
     </div>
   );
 }
