@@ -79,3 +79,7 @@ body {
   max-width: 30%;
   align-self: center;
 }
+
+.selected {
+  background-color: #1a2a7a;
+}
