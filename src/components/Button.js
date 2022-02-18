@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TriviaContext } from "../TriviaContext";
 
 export default function Button(props) {
-  const [trivia, setTrivia] = useContext(TriviaContext);
+  /* const [trivia, setTrivia] = useContext(TriviaContext);
   const selectAnswer = (id) => {
     setTrivia((prev) => {
       return prev.map((element) => {
@@ -14,12 +14,12 @@ export default function Button(props) {
       });
     });
     console.log(trivia);
-  };
+  }; */
 
   return (
     <button
       className={props.isSelected ? "button selected" : "button"}
-      onClick={() => selectAnswer(props.id)}
+      onClick={props.selectAnswer}
     >
       {props.answer}
     </button>
