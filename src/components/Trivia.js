@@ -5,7 +5,9 @@ import { nanoid } from "nanoid";
 import Button from "./Button";
 
 export default function Trivia(props) {
-  const [trivia, setTrivia] = useContext(TriviaContext);
+  const { value } = useContext(TriviaContext);
+
+  const [trivia, setTrivia] = value;
   const selectAnswer = (id) => {
     setTrivia((prev) => {
       return prev.map((element) => {
@@ -27,6 +29,7 @@ export default function Trivia(props) {
         answer={element.answer}
         key={nanoid()}
         isSelected={element.isSelected}
+        isCorrect={element.isCorrect}
         id={element.id}
         selectAnswer={() => selectAnswer(element.id)}
       />

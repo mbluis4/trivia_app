@@ -4,8 +4,13 @@ import Trivia from "./Trivia";
 import { TriviaContext } from "../TriviaContext";
 
 export default function Page1() {
-  const [trivia, setTrivia] = useContext(TriviaContext);
+  const { value, value2 } = useContext(TriviaContext);
+  const [trivia, setTrivia] = value;
+  const [check, setCheck] = value2;
 
+  const checkAnswers = () => {
+    setCheck(true);
+  };
   //console.log(trivia);
 
   const questions = trivia.map((trivia) => {
@@ -22,7 +27,9 @@ export default function Page1() {
   return (
     <div className="page1">
       {questions}
-      <button className="btn check">Check answers</button>
+      <button className="btn check" onClick={checkAnswers}>
+        Check answers
+      </button>
     </div>
   );
 }
