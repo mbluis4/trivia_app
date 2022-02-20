@@ -1,15 +1,24 @@
 import { nanoid } from "nanoid";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Trivia from "./Trivia";
 import { TriviaContext } from "../TriviaContext";
 
 export default function Page1() {
   const { value, value2 } = useContext(TriviaContext);
+  const [count, setCount] = useState(0);
   const [trivia, setTrivia] = value;
   const [check, setCheck] = value2;
 
   const checkAnswers = () => {
     setCheck(true);
+    // count correct answers
+    trivia.forEach((trivia) => {
+      trivia.answers.forEach((element) => {
+        if (element.isCorrect & (element.isCorrect === element.isSelected))
+          setCount((prev) => prev + 1);
+      });
+    });
+    console.log(count);
   };
   //console.log(trivia);
 
@@ -30,6 +39,7 @@ export default function Page1() {
       <button className="btn check" onClick={checkAnswers}>
         Check answers
       </button>
+      {check && <h2>You scored {count}/5 correct answers</h2>}
     </div>
   );
 }
