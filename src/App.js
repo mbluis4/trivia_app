@@ -10,11 +10,15 @@ function App() {
   const startQuiz = () => {
     setPage1((prev) => !prev);
   };
+
+  const resetGame = () => {
+    setPage1(true);
+  };
   return (
     <TriviaProvider>
       <div className="App">
         {!page1 && <Start startQuiz={startQuiz} />}
-        {page1 && <Page1 />}
+        {page1 && <Page1 resetGame={resetGame} />}
       </div>
     </TriviaProvider>
   );

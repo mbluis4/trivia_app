@@ -10,8 +10,13 @@ export default function Button(props) {
   if (props.isSelected) buttonStyle = "button selected";
 
   if (check) {
-    if (props.isCorrect !== props.isSelected) buttonStyle = "button incorrect";
-    if (props.isCorrect) buttonStyle = "button correct";
+    if (props.isCorrect !== props.isSelected) {
+      buttonStyle = "button incorrect";
+    }
+    if (props.isCorrect) {
+      buttonStyle = "button correct";
+    } else if (!props.isSelected && !props.isCorrect)
+      buttonStyle = "button faded";
   }
 
   return (

@@ -16,7 +16,9 @@ export default function Trivia(props) {
           answers: element.answers.map((answer) => {
             return answer.id === id
               ? { ...answer, isSelected: !answer.isSelected }
-              : answer;
+              : {
+                  ...answer,
+                };
           }),
         };
       });

@@ -3,24 +3,40 @@ import { useContext, useEffect, useState } from "react";
 import Trivia from "./Trivia";
 import { TriviaContext } from "../TriviaContext";
 
-export default function Page1() {
-  const { value, value2 } = useContext(TriviaContext);
+export default function Page1(props) {
+  const { value, value2, value3 } = useContext(TriviaContext);
   const [count, setCount] = useState(0);
   const [trivia, setTrivia] = value;
   const [check, setCheck] = value2;
+  const [reset, setReset] = value3;
 
   const checkAnswers = () => {
-    setCheck(true);
-    // count correct answers
-    trivia.forEach((trivia) => {
-      trivia.answers.forEach((element) => {
-        if (element.isCorrect & (element.isCorrect === element.isSelected))
-          setCount((prev) => prev + 1);
+    if (!check) {
+      setCheck(true);
+      // count correct answers
+      trivia.forEach((trivia) => {
+        trivia.answers.forEach((element) => {
+          if (element.isCorrect & (element.isCorrect === element.isSelected))
+            setCount((prev) => prev + 1);
+        });
       });
-    });
-    console.log(count);
+    } else {
+      props.resetGame();
+      setTrivia((prev) => {
+        return prev.map((element) => {
+          return {
+            ...element,
+            answers: element.answers.map((answer) => {
+              return { ...answer, isSelected: false };
+            }),
+          };
+        });
+      });
+      setCheck(false);
+      setReset((prev) => !prev);
+      setCount(0);
+    }
   };
-  //console.log(trivia);
 
   const questions = trivia.map((trivia) => {
     return (
@@ -36,10 +52,14 @@ export default function Page1() {
   return (
     <div className="page1">
       {questions}
-      <button className="btn check" onClick={checkAnswers}>
-        Check answers
-      </button>
-      {check && <h2>You scored {count}/5 correct answers</h2>}
+      <div className="bottom">
+        {check && (
+          <h2 className="question">You scored {count}/5 correct answers</h2>
+        )}
+        <button className="btn check" onClick={checkAnswers}>
+          {check ? "Play again" : "Check answers"}
+        </button>
+      </div>
     </div>
   );
 }

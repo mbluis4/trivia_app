@@ -63,6 +63,11 @@ body {
   margin-bottom: 1em;
 }
 
+.bottom {
+  display: flex;
+  align-items: center;
+}
+
 .button {
   font-family: Inter, sans-serif;
   padding: 0.5em 1em;
@@ -79,6 +84,7 @@ body {
   margin: 0 auto;
   margin-top: 1em;
   width: 30%;
+  padding: 1em 2em;
 }
 
 .selected {
@@ -87,8 +93,16 @@ body {
 
 .correct {
   background-color: lightgreen;
+  border: none;
 }
 
 .incorrect {
   background-color: #f8bcbc;
+  opacity: 0.7;
+  border: none;
+}
+
+.faded {
+  background-color: #f5f7fb;
+  opacity: 0.4;
 }
