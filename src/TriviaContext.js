@@ -35,7 +35,8 @@ export const TriviaProvider = (props) => {
             };
           });
         });
-      });
+      })
+      .catch((error) => console.log("error"));
   }, [reset]);
 
   return (

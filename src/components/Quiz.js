@@ -1,9 +1,9 @@
 import { nanoid } from "nanoid";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Trivia from "./Trivia";
 import { TriviaContext } from "../TriviaContext";
 
-export default function Page1(props) {
+export default function Quiz() {
   const { value, value2, value3 } = useContext(TriviaContext);
   const [count, setCount] = useState(0);
   const [trivia, setTrivia] = value;
@@ -21,17 +21,6 @@ export default function Page1(props) {
         });
       });
     } else {
-      props.resetGame();
-      setTrivia((prev) => {
-        return prev.map((element) => {
-          return {
-            ...element,
-            answers: element.answers.map((answer) => {
-              return { ...answer, isSelected: false };
-            }),
-          };
-        });
-      });
       setCheck(false);
       setReset((prev) => !prev);
       setCount(0);
