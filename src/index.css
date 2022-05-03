@@ -20,6 +20,14 @@ body {
   margin: 0;
 }
 
+.title {
+  font-family: Karla,
+  sans-serif;
+  color: #293264;
+  font-size: 2rem;
+  margin: 0;
+}
+
 .start p {
   margin-top: 0.5em;
   margin-bottom: 2em;

@@ -47,6 +47,7 @@ export default function Quiz() {
 
   return (
     <div className="page1">
+      <h1 className="title">How many can you score?</h1>
       {questions}
       <div className="bottom">
         {check && (

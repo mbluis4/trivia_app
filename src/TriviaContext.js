@@ -13,7 +13,7 @@ export const TriviaProvider = (props) => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      "https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple"
+      "https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple&encode=base64"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -21,13 +21,13 @@ export const TriviaProvider = (props) => {
           setTrivia(() => {
             return data.results.map((result) => {
               return {
-                question: result.question,
+                question: window.atob(result.question),
                 correctAnswer: result.correct_answer,
                 answers: shuffleArray(
                   [...result.incorrect_answers, result.correct_answer].map(
                     (el) => {
                       return {
-                        answer: el,
+                        answer: window.atob(el),
                         isSelected: false,
                         isCorrect: result.correct_answer === el ? true : false,
                         id: nanoid(),
