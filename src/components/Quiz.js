@@ -39,6 +39,7 @@ export default function Quiz() {
       <Trivia
         key={nanoid()}
         question={trivia.question}
+        qId={trivia.qId}
         correctAnswer={trivia.correctAnswer}
         answers={trivia.answers}
       />

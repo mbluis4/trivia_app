@@ -22,6 +22,7 @@ export const TriviaProvider = (props) => {
             return data.results.map((result) => {
               return {
                 question: window.atob(result.question),
+                qId: nanoid(),
                 correctAnswer: result.correct_answer,
                 answers: shuffleArray(
                   [...result.incorrect_answers, result.correct_answer].map(
@@ -44,7 +45,6 @@ export const TriviaProvider = (props) => {
 
       .catch((error) => console.log("error"));
   }, [reset]);
-
   return (
     <TriviaContext.Provider
       value={{

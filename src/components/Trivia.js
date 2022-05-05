@@ -7,7 +7,7 @@ import Button from "./Button";
 export default function Trivia(props) {
   const { setTrivia } = useContext(TriviaContext);
 
-  const selectAnswer = (id) => {
+  const selectAnswer = (id, qId) => {
     setTrivia((prev) => {
       return prev.map((element) => {
         return {
@@ -15,6 +15,8 @@ export default function Trivia(props) {
           answers: element.answers.map((answer) => {
             return answer.id === id
               ? { ...answer, isSelected: !answer.isSelected }
+              : qId === element.qId
+              ? { ...answer, isSelected: false }
               : {
                   ...answer,
                 };
@@ -23,7 +25,6 @@ export default function Trivia(props) {
       });
     });
   };
-
   const buttonsComp = props.answers.map((element) => {
     return (
       <Button
@@ -32,7 +33,8 @@ export default function Trivia(props) {
         isSelected={element.isSelected}
         isCorrect={element.isCorrect}
         id={element.id}
-        selectAnswer={() => selectAnswer(element.id)}
+        qId={props.qId}
+        selectAnswer={() => selectAnswer(element.id, props.qId)}
       />
     );
   });

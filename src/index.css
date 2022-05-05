@@ -90,7 +90,14 @@ body {
   color: #293264;
   border: #4d5b9e solid 1px;
   cursor: pointer;
+  transition: transform 100ms;
+
 }
+
+.button:hover {
+  transform: scale(1.1);
+}
+
 
 .check {
   display: block;
@@ -102,11 +109,14 @@ body {
 
 .selected {
   background-color: #d6dbf5;
+  transform: scale(1.1);
+ 
 }
 
 .correct {
   background-color: lightgreen;
   border: none;
+  transform: scale(1.15);
 }
 
 .incorrect {
