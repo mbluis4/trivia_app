@@ -117,6 +117,7 @@ body {
   background-color: lightgreen;
   border: none;
   transform: scale(1.15);
+  animation: check 0.6s ease;
 }
 
 .incorrect {
@@ -135,6 +136,15 @@ body {
 @keyframes spinner {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes check {
+  from {
+    transform: scale(1.1)
+  }
+  to {
+    transform: scale(1.15)
   }
 }
 
