@@ -4,11 +4,8 @@ import Trivia from "./Trivia";
 import { TriviaContext } from "../TriviaContext";
 
 export default function Quiz() {
-  const { value, value2, value3 } = useContext(TriviaContext);
+  const { trivia, check, setCheck, setReset } = useContext(TriviaContext);
   const [count, setCount] = useState(0);
-  const [trivia, setTrivia] = value;
-  const [check, setCheck] = value2;
-  const [reset, setReset] = value3;
 
   const checkAnswers = () => {
     if (!check) {

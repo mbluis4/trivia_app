@@ -38,13 +38,16 @@ export const TriviaProvider = (props) => {
       })
       .catch((error) => console.log("error"));
   }, [reset]);
-
+  console.log(trivia);
   return (
     <TriviaContext.Provider
       value={{
-        value: [trivia, setTrivia],
-        value2: [check, setCheck],
-        value3: [reset, setReset],
+        trivia,
+        setTrivia,
+        check,
+        setCheck,
+        reset,
+        setReset,
       }}
     >
       {props.children}

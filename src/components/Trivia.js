@@ -1,13 +1,11 @@
-//import shuffleArray from "./modules/shuffleArray";
 import { useContext } from "react";
 import { TriviaContext } from "../TriviaContext";
 import { nanoid } from "nanoid";
 import Button from "./Button";
 
 export default function Trivia(props) {
-  const { value } = useContext(TriviaContext);
+  const { setTrivia } = useContext(TriviaContext);
 
-  const [trivia, setTrivia] = value;
   const selectAnswer = (id) => {
     setTrivia((prev) => {
       return prev.map((element) => {

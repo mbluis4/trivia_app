@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { TriviaContext } from "../TriviaContext";
 
 export default function Button(props) {
-  const { value2 } = useContext(TriviaContext);
-  const [check, setCheck] = value2;
+  const { check } = useContext(TriviaContext);
 
   let buttonStyle = "button";
 

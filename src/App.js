@@ -6,14 +6,12 @@ function App() {
     <div className="App">
       <div className="start">
         <div className="blobs top"></div>
-        <h1>Quizzical</h1>
+        <h1>Test time!</h1>
         <p>Prove your general knowledge</p>
         <Link to="/quiz">
           <button className="btn">Start quiz</button>
         </Link>
       </div>
-
-      {/*  {page1 && <Page1 resetGame={resetGame} />} */}
     </div>
   );
 }
